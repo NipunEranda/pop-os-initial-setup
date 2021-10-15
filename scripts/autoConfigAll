@@ -1,0 +1,58 @@
+#!/bin/bash
+
+#System Upgrade
+sudo apt update && sudo apt full-upgrade
+sudo apt dist-upgrade -y
+
+#Auto Remove and clean
+sudo apt autoremove
+sudo apt autoclean
+
+#General Software Installation
+sudo apt install software-properties-common
+sudo apt install htop
+sudo apt install net-tools
+sudo apt install apt-transport-https
+sudo apt install curl
+sudo apt install plank
+sudo apt install python3
+sudo apt install tlp tlp-rdw
+sudo apt install gnome-tweaks
+sudo apt install nautilus-admin
+sudo apt install openssh-server
+sudo apt install ufw
+sudo apt install git
+sudo apt install neofetch
+sudo apt install gparted
+sudo apt install openconnect network-manager-openconnect network-manager-openconnect-gnome openvpn network-manager-openvpn network-manager-openvpn-gnome
+sudo apt install libavcodec-extra
+sudo apt install gnome-tweak-tool gnome-shell-extensions chrome-gnome-shell
+sudo apt install stacer
+sudo apt install chromium-browser
+
+#Other softwares
+sudo apt install smplayer 
+sudo apt install geany
+sudo apt install openjdk-11-jdk openjdk-11-jre
+sudo apt install apache2
+sudo apt install npm nodejs
+sudo apt install mysql-server-8.0 php phpmyadmin
+sudo apt install vlc
+sudo apt install uget
+sudo apt install maven
+
+#Initiations
+
+#Starting tlp
+sudo tlp start
+
+#Reconfiguring dpkg
+sudo dpkg-reconfigure libdvd-pkg
+
+#Configuring MYSQL
+sudo mysql -h "localhost" "mysql" < "sqlSchemas/sqlConfigure.sh" #user user, password 1234
+
+
+
+
+Echo "Gnome Extensions to add : Compiz windows effect, Dynamic Panel Transparency, Frippery Move Clock, User Themes, Panel OSD"

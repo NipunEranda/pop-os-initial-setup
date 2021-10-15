@@ -1,0 +1,78 @@
+#!/bin/bash
+declare -i systemUpgradeCount=0
+declare -i basicSoftwaresCount=0
+declare -i customSelectSoftwaresCount=0
+declare -i autoConfigAllCount=0
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+NC=`tput sgr0`
+
+while :
+
+do
+
+echo "${GREEN}"
+echo "##############################################"
+echo "#                                            #"
+echo "#       POP OS Initial Setup By Zyph3R       #"
+echo "#                                            #"
+echo "##############################################"
+echo "#                                            #"
+if [ $systemUpgradeCount -eq "0" ];
+then
+	echo "#    Option 1 : System upgrade               #"
+else
+	echo "#    ${RED}Option 1 : System upgrade${GREEN}               #"
+fi
+
+if [ $basicSoftwaresCount -eq "0" ];
+then
+	echo "#    Option 2 : Basic Software Installation  #"
+else
+	echo "#    ${RED}Option 2 : Basic Software Installation${GREEN}  #"
+fi
+
+if [ $customSelectSoftwaresCount -eq "0" ];
+then
+	echo "#    Option 3 : Choose Required Softwares    #"
+else
+	echo "#    ${RED}Option 3 : Choose Required Softwares${GREEN}    #"
+fi
+
+if [ $autoConfigAllCount -eq "0" ];
+then
+	echo "#    Option 4 : Auto Configure All           #"
+else
+	echo "#    ${RED}Option 4 : Auto Configure All${GREEN}           #"
+fi
+
+echo "#    Option 5 : Exit                         #"
+echo "#                                            #"
+echo "##############################################"
+echo ""
+read -p "Select an option : " choice
+
+if [ $choice == 1 ];
+then
+	/bin/bash ./scripts/systemUpgrade
+	systemUpgradeCount+=1
+elif [ $choice == 2 ];
+then
+	/bin/bash ./scripts/basicSoftwares
+	basicSoftwaresCount+=1
+elif [ $choice == 3 ];
+then
+	/bin/bash ./scripts/customSelectSoftwares
+	customSelectSoftwaresCount+=1
+elif [ $choice == 4 ];
+then
+	/bin/bash ./scripts/autoConfigAll
+	autoConfigAllCount+=1
+elif [ $choice == 5 ];
+then
+	exit
+else
+	continue
+fi
+
+done

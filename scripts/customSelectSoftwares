@@ -1,0 +1,25 @@
+#!/bin/bash
+declare -a softwares=("smplayer" "geany" "openjdk-11-jdk openjdk-11-jre" "apache2" "npm nodejs" "mysql-server-8.0" "php phpmyadmin" "vlc" "uget" "maven")
+declare -i count=0
+for software in "${softwares[@]}";
+do
+	count+=1
+	read -p "Do you want to install $software ($count/${#softwares[@]}) (y/n) : " choice
+
+	if [ "$choice" = "y" -o "$choice" = "Y" ];
+	then
+		echo $software
+	else
+		continue
+	fi
+done
+
+echo ""
+
+read -p "Do you want to add a mysql user with all privileges instead of root (y/n)? : " choice
+if [ "$choice" = "y" -o "$choice" = "Y" ];
+then
+	sudo mysql -h "localhost" "mysql" < "CREATE USER 'user' IDENTIFIED BY '1234';"
+	sudo mysql -h "localhost" "mysql" < "GRANT ALL PRIVILEGES ON *.* TO 'user'@'%' WITH GRANT OPTION;"
+	sudo mysql -h "localhost" "mysql" < "flush privileges;"
+fi
